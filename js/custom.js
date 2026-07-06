@@ -11,14 +11,38 @@ $(function() {
 
 /* Flex slider */
 
-  $(window).load(function() {
-    $('.flexslider').flexslider({
-      easing: "easeInOutSine",
-      directionNav: false,
-      animationSpeed: 1500,
-      slideshowSpeed: 5000
-    });
+$(document).ready(function() {
+  // 确保第一个slide显示
+  $('.flexslider .slides > li:first').css('display', 'block');
+
+  $('.flexslider').flexslider({
+    animation: "fade",
+    easing: "swing",
+    directionNav: false,
+    controlNav: true,
+    animationSpeed: 800,
+    slideshowSpeed: 6000,
+    initDelay: 0,
+    pauseOnAction: false,
+    pauseOnHover: true,
+    useCSS: true,
+    touch: true,
+    smoothHeight: false,
+    randomize: false,
+    pausePlay: false,
+    start: function(slider) {
+      slider.removeClass('loading');
+      // 确保所有slide都正确初始化
+      slider.slides.css('display', 'block');
+    },
+    before: function(slider) {
+      // 切换前的处理
+    },
+    after: function(slider) {
+      // 切换后的处理
+    }
   });
+});
 
 /* Image block effects */
 
